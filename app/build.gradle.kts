@@ -57,6 +57,11 @@ dependencies {
     implementation(libs.androidx.navigation3.ui)
     implementation(libs.androidx.lifecycle.viewmodel.navigation3)
 
+    implementation(project(":feature:product_list:product_list_presentation"))
+    implementation(project(":feature:product_detail:product_detail_presentation"))
+    implementation(project(":feature:cart:cart_presentation"))
+
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

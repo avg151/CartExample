@@ -1,4 +1,4 @@
-package com.example.product_detail_presentation.navigation
+package com.example.core.navigation.feature_navigators
 
 interface ProductDetailNavigator {
     fun back()

@@ -12,21 +12,22 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import com.example.core.navigation.LocalAppNavigator
 
 @Composable
 fun ProductDetailScreen(
     title: String,
-    onOpenCart: () -> Unit,
-    onBack: () -> Unit
 ) {
+    val navigator = LocalAppNavigator.current
+
     Box(Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
             Text(title)
             Spacer(Modifier.height(16.dp))
-            Button(onClick = onOpenCart) {
+            Button(onClick = { navigator.openCart() }) {
                 Text("В корзину")
             }
-            Button(onClick = onBack) {
+            Button(onClick = { navigator.back() }) {
                 Text("Назад")
             }
         }

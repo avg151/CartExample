@@ -17,14 +17,15 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.example.core.navigation.LocalAppNavigator
 import com.example.product_list_presentation.vm.ProductListViewModel
 
 @Composable
 fun ProductListScreen(
     vm: ProductListViewModel = hiltViewModel(),
-    onOpenProduct: (String) -> Unit,
-    onOpenCart: () -> Unit
 ) {
+    val navigator = LocalAppNavigator.current
+
     val state by vm.state.collectAsStateWithLifecycle()
     when {
         state.isLoading -> {
@@ -53,7 +54,7 @@ fun ProductListScreen(
                         text = item,
                         modifier = Modifier
                             .fillMaxWidth()
-                            .clickable { onOpenProduct(item) }
+                            .clickable { navigator.openProduct(item) }
                     )
                 }
             }

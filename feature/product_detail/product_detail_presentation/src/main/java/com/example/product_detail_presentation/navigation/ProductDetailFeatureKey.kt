@@ -4,4 +4,4 @@ import androidx.navigation3.runtime.NavKey
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class ProductDetailKey(val id: String) : NavKey
+data class ProductDetailFeatureKey(val id: String) : NavKey

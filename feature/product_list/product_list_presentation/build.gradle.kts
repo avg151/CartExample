@@ -24,6 +24,8 @@ android {
 }
 
 dependencies {
+    implementation(project(":core:navigation"))
+
     implementation(project(":feature:product_list:product_list_domain"))
 
     implementation(libs.androidx.core.ktx)

@@ -46,6 +46,16 @@ android {
 }
 
 dependencies {
+    implementation(project(":core:navigation_impl"))
+
+    implementation(project(":feature:product_list:product_list_di"))
+    implementation(project(":feature:product_list:product_list_presentation"))
+
+    implementation(project(":feature:product_detail:product_detail_presentation"))
+
+    implementation(project(":feature:cart:cart_presentation"))
+
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
@@ -63,12 +73,6 @@ dependencies {
 
     implementation(libs.hilt.android)
     kapt(libs.hilt.compiler)
-
-    implementation(project(":feature:product_list:product_list_di"))
-    implementation(project(":feature:product_list:product_list_presentation"))
-    implementation(project(":feature:product_detail:product_detail_presentation"))
-    implementation(project(":feature:cart:cart_presentation"))
-
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

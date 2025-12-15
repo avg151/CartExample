@@ -8,10 +8,8 @@ import androidx.navigation3.runtime.NavKey
 import com.example.product_detail_presentation.ui.ProductDetailScreen
 import com.example.product_detail_presentation.vm.ProductDetailViewModel
 
-fun EntryProviderScope<NavKey>.productDetailEntries(
-    navigator: ProductDetailNavigator
-) {
-    entry<ProductDetailKey> { key ->
+fun EntryProviderScope<NavKey>.productDetailEntries() {
+    entry<ProductDetailFeatureKey> { key ->
         val vm: ProductDetailViewModel = viewModel()
         vm.bind(key.id.toString())
 
@@ -19,8 +17,6 @@ fun EntryProviderScope<NavKey>.productDetailEntries(
 
         ProductDetailScreen(
             title = title,
-            onOpenCart = { navigator.openCart() },
-            onBack = { navigator.back() },
         )
     }
 }

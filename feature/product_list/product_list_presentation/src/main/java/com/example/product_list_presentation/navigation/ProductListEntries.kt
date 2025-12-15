@@ -4,13 +4,8 @@ import androidx.navigation3.runtime.EntryProviderScope
 import androidx.navigation3.runtime.NavKey
 import com.example.product_list_presentation.ui.ProductListScreen
 
-fun EntryProviderScope<NavKey>.productListEntries(
-    navigator: ProductListNavigator
-) {
+fun EntryProviderScope<NavKey>.productListEntries() {
     entry<ProductListKey> {
-        ProductListScreen(
-            onOpenProduct = { id -> navigator.openProduct(id) },
-            onOpenCart = { navigator.openCart() }
-        )
+        ProductListScreen()
     }
 }

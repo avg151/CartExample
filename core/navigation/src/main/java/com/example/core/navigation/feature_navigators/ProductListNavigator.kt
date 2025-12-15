@@ -1,4 +1,4 @@
-package com.example.product_list_presentation.navigation
+package com.example.core.navigation.feature_navigators
 
 interface ProductListNavigator {
     fun openProduct(id: String)

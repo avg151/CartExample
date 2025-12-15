@@ -20,7 +20,7 @@ import com.example.product_list_presentation.navigation.ProductListNavigator
 import com.example.product_list_presentation.navigation.productListEntries
 
 @Composable
-fun AppRoot() {
+fun AppRootNavDisplay() {
     val backStack = rememberNavBackStack(ProductListKey)
     val navigator = remember(backStack) { AppNavigator(backStack) }
 
@@ -45,7 +45,7 @@ class AppNavigator(private val backStack: MutableList<NavKey>) :
     ProductDetailNavigator,
     CartNavigator {
 
-    override fun openProduct(id: Int) {
+    override fun openProduct(id: String) {
         backStack.add(ProductDetailKey(id))
     }
 

@@ -15,6 +15,7 @@ dependencyResolutionManagement {
 rootProject.name = "My Application"
 include(":app")
 
+include(":feature:product_list:product_list_di")
 include(":feature:product_list:product_list_data")
 include(":feature:product_list:product_list_domain")
 include(":feature:product_list:product_list_presentation")

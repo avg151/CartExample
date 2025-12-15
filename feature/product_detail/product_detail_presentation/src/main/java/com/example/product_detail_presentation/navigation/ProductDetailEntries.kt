@@ -17,7 +17,6 @@ fun EntryProviderScope<NavKey>.productDetailEntries(
 
         val title = vm.title.collectAsState().value
 
-
         ProductDetailScreen(
             title = title,
             onOpenCart = { navigator.openCart() },

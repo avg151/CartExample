@@ -24,7 +24,7 @@ android {
 }
 
 dependencies {
-    implementation(project(":core:navigation"))
+    implementation(project(":core:navigation:navigation_api"))
 
     implementation(project(":feature:product_list:product_list_domain"))
 

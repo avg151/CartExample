@@ -11,20 +11,20 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.example.core.navigation.AppNavigator
+import com.example.core.navigation.LocalAppNavigator
 import com.example.product_list_presentation.ui.ui_state.ProductListUiState
 
 @Composable
 internal fun ProductListDataScreen(
-    state: ProductListUiState,
-    navigator: AppNavigator
+    state: ProductListUiState
 ) {
+    val navigator = LocalAppNavigator.current
+
     LazyColumn(
         modifier = Modifier.fillMaxSize(),
         contentPadding = PaddingValues(16.dp),
         verticalArrangement = Arrangement.spacedBy(8.dp),
-
-        ) {
+    ) {
         items(
             items = state.items,
         ) { item ->

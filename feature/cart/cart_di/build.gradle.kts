@@ -1,11 +1,12 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
-    alias(libs.plugins.kotlin.compose)
+    alias(libs.plugins.hilt.android)
+    kotlin("kapt")
 }
 
 android {
-    namespace = "com.example.core.navigation_impl"
+    namespace = "com.example.cart_di"
     compileSdk {
         version = release(36)
     }
@@ -36,17 +37,16 @@ android {
 }
 
 dependencies {
-    implementation(project(":core:navigation"))
-
-    implementation(project(":feature:product_detail:product_detail_presentation"))
-    implementation(project(":feature:cart:cart_presentation"))
+    implementation(project(":feature:cart:cart_domain"))
+    implementation(project(":feature:cart:cart_data"))
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
-    implementation(libs.androidx.navigation3.runtime)
+    implementation(libs.androidx.work.runtime.ktx)
 
-    implementation(libs.androidx.compose.runtime)
+    implementation(libs.hilt.android)
+    kapt(libs.hilt.compiler)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

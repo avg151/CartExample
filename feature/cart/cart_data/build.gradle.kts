@@ -1,6 +1,8 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.hilt.android)
+    kotlin("kapt")
 }
 
 android {
@@ -19,8 +21,13 @@ android {
 }
 
 dependencies {
-    // Связь по Clean Architecture: data -> domain
-//    implementation(project(":feature:cart:cart_domain"))
+    implementation(project(":feature:cart:cart_domain"))
 
-//    implementation(libs.kotlinx.coroutines.android)
+    implementation(libs.kotlinx.coroutines.android)
+
+    implementation(libs.hilt.android)
+    kapt(libs.hilt.compiler)
+
+    implementation(libs.androidx.hilt.common)
+    implementation(libs.androidx.work.runtime.ktx)
 }

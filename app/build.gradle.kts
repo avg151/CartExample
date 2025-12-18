@@ -46,14 +46,16 @@ android {
 }
 
 dependencies {
-    implementation(project(":core:navigation_impl"))
+    implementation(project(":core:navigation:navigation_impl"))
 
     implementation(project(":feature:product_list:product_list_di"))
     implementation(project(":feature:product_list:product_list_presentation"))
 
     implementation(project(":feature:product_detail:product_detail_presentation"))
 
+    implementation(project(":feature:cart:cart_di"))
     implementation(project(":feature:cart:cart_presentation"))
+    implementation(project(":feature:cart:cart_domain"))
 
 
     implementation(libs.androidx.core.ktx)
@@ -72,6 +74,7 @@ dependencies {
     implementation(libs.androidx.lifecycle.viewmodel.navigation3)
 
     implementation(libs.hilt.android)
+    implementation(libs.androidx.hilt.work)
     kapt(libs.hilt.compiler)
 
     testImplementation(libs.junit)

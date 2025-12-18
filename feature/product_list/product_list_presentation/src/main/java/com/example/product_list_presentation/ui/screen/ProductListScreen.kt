@@ -21,7 +21,6 @@ import com.example.product_list_presentation.vm.ProductListViewModel
 fun ProductListScreen(
     vm: ProductListViewModel = hiltViewModel(),
 ) {
-    val navigator = LocalAppNavigator.current
     val state by vm.state.collectAsStateWithLifecycle()
 
     Scaffold(
@@ -35,7 +34,7 @@ fun ProductListScreen(
             when {
                 state.isLoading -> ProductListLoadingScreen()
                 state.error != null -> ProductListErrorScreen(state.error)
-                else -> ProductListDataScreen(state, navigator)
+                else -> ProductListDataScreen(state)
             }
         }
     }

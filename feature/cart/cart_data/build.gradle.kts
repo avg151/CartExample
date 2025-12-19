@@ -21,12 +21,17 @@ android {
 }
 
 dependencies {
+    implementation(project(":core:network"))
+
     implementation(project(":feature:cart:cart_domain"))
 
     implementation(libs.kotlinx.coroutines.android)
 
     implementation(libs.hilt.android)
     kapt(libs.hilt.compiler)
+
+    implementation(libs.retrofit)
+    implementation(libs.kotlinx.serialization.json)
 
     implementation(libs.androidx.hilt.common)
     implementation(libs.androidx.work.runtime.ktx)

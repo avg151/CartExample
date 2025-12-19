@@ -1,6 +1,7 @@
 package com.example.cart.repo
 
-import com.example.cart.remote.FakeCartRemoteDataSource
+import com.example.cart.remote.data_source.fake.FakeCartRemoteDataSource
+import com.example.cart.remote.mapper.toDomain
 import com.example.cart.store.CartStore
 import com.example.cart_domain.model.Cart
 import com.example.cart_domain.model.CartItem
@@ -21,7 +22,7 @@ class CartRepositoryImpl @Inject constructor(
             .distinctUntilChanged()
 
     override suspend fun refreshCart() {
-        val serverCart = remote.fetchCart()
+        val serverCart = remote.getCart().toDomain()
 
         // Пока просто заменяем локальную корзину на серверную.
         // Позже здесь можно сделать merge/сверку/конфликт-резолв.

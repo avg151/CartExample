@@ -6,7 +6,7 @@ plugins {
 }
 
 android {
-    namespace = "com.example.cart_di"
+    namespace = "com.example.network"
     compileSdk {
         version = release(36)
     }
@@ -37,18 +37,20 @@ android {
 }
 
 dependencies {
-    implementation(project(":feature:cart:cart_domain"))
-    implementation(project(":feature:cart:cart_data"))
-
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
-    implementation(libs.androidx.work.runtime.ktx)
 
     implementation(libs.hilt.android)
     kapt(libs.hilt.compiler)
 
     implementation(libs.retrofit)
+    implementation(libs.retrofit.converter.kotlinx.serialization)
+
+    implementation(libs.okhttp)
+    debugImplementation(libs.okhttp.logging.interceptor)
+
+    implementation(libs.kotlinx.serialization.json)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

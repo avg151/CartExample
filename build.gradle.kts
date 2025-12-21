@@ -7,3 +7,12 @@ plugins {
     alias(libs.plugins.jetbrains.kotlin.jvm) apply false
     alias(libs.plugins.hilt.android) apply false
 }
+
+subprojects {
+    configurations.configureEach {
+        resolutionStrategy.force(
+            "com.squareup:javapoet:1.13.0",
+            "org.jetbrains.kotlin:kotlin-metadata-jvm:2.3.0",
+        )
+    }
+}

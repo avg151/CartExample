@@ -11,7 +11,7 @@ import com.example.product_detail_presentation.vm.ProductDetailViewModel
 fun EntryProviderScope<NavKey>.productDetailEntries() {
     entry<ProductDetailFeatureKey> { key ->
         val vm: ProductDetailViewModel = viewModel()
-        vm.bind(key.id.toString())
+        vm.bind(key.id)
 
         val title = vm.title.collectAsState().value
 

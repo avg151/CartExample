@@ -15,14 +15,18 @@ android {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }
-    kotlinOptions {
-        jvmTarget = "11"
+    kotlin {
+        compilerOptions {
+            jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_11)
+        }
     }
 }
 
 dependencies {
 
     implementation(project(":core:navigation:navigation_api"))
+
+    implementation(project(":feature:shared:cart_widgets"))
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)

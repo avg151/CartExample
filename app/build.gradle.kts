@@ -48,6 +48,8 @@ android {
 dependencies {
     implementation(project(":core:navigation:navigation_impl"))
 
+    implementation(project(":feature:shared:cart_widgets"))
+
     implementation(project(":feature:product_list:product_list_di"))
     implementation(project(":feature:product_list:product_list_presentation"))
 

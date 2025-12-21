@@ -2,6 +2,7 @@ package com.example.cart_di
 
 import com.example.cart_domain.repo.CartRepository
 import com.example.cart_domain.usecase.ChangeCartItemQuantityUseCase
+import com.example.cart_domain.usecase.ObserveCartSummaryUseCase
 import com.example.cart_domain.usecase.ObserveCartUseCase
 import com.example.cart_domain.usecase.RefreshCartUseCase
 import dagger.Module
@@ -21,4 +22,7 @@ object CartUseCasesDiModule {
 
     @Provides
     fun provideChangeQuantityUseCase(repo: CartRepository) = ChangeCartItemQuantityUseCase(repo)
+
+    @Provides
+    fun provideObserveCartSummaryUseCase(repo: CartRepository) = ObserveCartSummaryUseCase(repo)
 }

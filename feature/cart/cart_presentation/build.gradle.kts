@@ -24,6 +24,8 @@ android {
 
 dependencies {
     implementation(project(":core:navigation:navigation_api"))
+    implementation(project(":core:design_system"))
+
     implementation(project(":feature:cart:cart_domain"))
 
     implementation(libs.androidx.core.ktx)

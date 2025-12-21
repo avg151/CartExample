@@ -28,9 +28,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.example.cart_presentation.ui.components.CartSummaryBar
 import com.example.cart_presentation.vm.CartViewModel
 import com.example.core.navigation.LocalAppNavigator
+import com.example.design_system.components.summary.SummaryActionBar
+import com.example.design_system.components.summary.data.SummaryActionBarUiData
 
 @Composable
 fun CartScreen(
@@ -56,9 +57,11 @@ fun CartScreen(
             )
         }
     ) { padding ->
-        Column(Modifier
-            .fillMaxSize()
-            .padding(padding)) {
+        Column(
+            Modifier
+                .fillMaxSize()
+                .padding(padding)
+        ) {
 
             if (state.error != null) {
                 Text(
@@ -99,10 +102,14 @@ fun CartScreen(
                 }
             }
 
-            CartSummaryBar(
-                totalItems = state.totalItems,
-                totalPrice = state.totalPrice,
-                onOpenCart = { /* уже на корзине */ },
+            SummaryActionBar(
+                data = SummaryActionBarUiData(
+                    title = state.totalItems.toString(),
+                    subtitle = state.totalPrice.toString(),
+                    actionText = "Cart",
+                    enabled = state.totalItems > 0
+                ),
+                onAction = { /* уже на корзине */ },
                 modifier = Modifier.fillMaxWidth()
             )
         }

@@ -1,4 +1,4 @@
-package com.example.design_system.components.test.constraintLayoutExample
+package com.example.design_system.components.test.constraint_layout_example
 
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Button

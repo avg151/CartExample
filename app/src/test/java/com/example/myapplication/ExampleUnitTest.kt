@@ -3,6 +3,7 @@ package com.example.myapplication
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
+import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -11,10 +12,8 @@ import kotlinx.coroutines.test.resetMain
 import kotlinx.coroutines.test.runTest
 import kotlinx.coroutines.test.setMain
 import org.junit.After
-import org.junit.Test
-
-import org.junit.Assert.*
 import org.junit.Before
+import org.junit.Test
 
 /**
  * Example local unit test, which will execute on the development machine (host).
@@ -38,11 +37,11 @@ class ExampleUnitTest {
     fun testViewModel1() = runTest(testDispatcher) {
         println("1")
 
-       launch {
-           println("2")
-           delay(200)
-           println("3")
-       }
+        launch {
+            println("2")
+            delay(200)
+            println("3")
+        }
 
         coroutineScope {
             println("enter coroutineScope")
@@ -132,6 +131,94 @@ class ExampleUnitTest {
             B
             D
          */
+    }
 
-}
+    @Test
+    fun testViewModel3() = runTest(testDispatcher) {
+        println("1")
+
+        launch {
+            println("2")
+        }
+
+        launch {
+            println("3")
+        }
+
+        println("4")
+        delay(100)
+        println("5")
+
+        /*
+            1
+            4
+            2
+            3
+            5
+     */
+    }
+
+    @Test
+    fun testViewModel4() = runTest(testDispatcher) {
+        val scope = CoroutineScope(SupervisorJob() + Dispatchers.Main)
+
+        scope.launch {
+            println("start parent scope")
+
+            try {
+                println("start parent try")
+
+                launch {
+                    println("start child 1")
+                    delay(1000)
+                    throw Exception("fail in child 1")
+                }
+
+                launch {
+                    try {
+                        println("start child 2")
+                        delay(2000)
+                        println("Success child 2")
+                    } finally {
+                        delay(500)
+                        println("finally in child 2")
+                    }
+                }
+
+                println("end parent try")
+            } catch (e: Exception) {
+                println("catch in parent")
+            }
+
+            println("end parent scope")
+        }.join()
+    }
+
+    @Test
+    fun testViewModel5() = runTest(testDispatcher) {
+        val scope = CoroutineScope(SupervisorJob() + Dispatchers.Main)
+
+        scope.launch {
+            println("start parent scope")
+
+            launch {
+                println("start child 1")
+                delay(1000)
+                throw Exception("fail in child 1")
+            }
+
+            launch {
+                try {
+                    println("start child 2")
+                    delay(2000)
+                    println("Success child 2")
+                } finally {
+                    delay(500)
+                    println("finally in child 2")
+                }
+            }
+
+            println("end parent scope")
+        }.join()
+    }
 }
